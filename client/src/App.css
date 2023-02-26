@@ -1,0 +1,64 @@
+/* .App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(220deg, #ec4c94, #3A0CA3 20%, #7209B7 55%, #4361EE 80%, #4CC9F0 90%)
+}
+
+.logo {
+  font-family: 'Style Script';
+  src: url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.auth-form-container, .login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container {
+  padding: 4rem;
+  border: 1px solid #4CC9F0;
+  border-radius: 10px;
+  box-shadow: 0 3px 3px 3px #4CC9F0;
+  opacity: 0.8;
+  margin: 0.5rem;
+}
+
+label {
+  text-align: left;
+  padding: .25rem 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: .75rem;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #7209B7;
+}
+
+.link-btn {
+  background: none;
+  color: white;
+  text-decoration: underline;
+}
+
+.login-btn {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem;
+} */

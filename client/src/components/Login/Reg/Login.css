@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(
+    220deg,
+    #ec4c94,
+    #3a0ca3 20%,
+    #7209b7 55%,
+    #4361ee 80%,
+    #4cc9f0 90%
+  );
+}
+
+.Logintext {
+  color: white;
+  padding-top: 10px;
+}
+
+.logintext {
+  color: black;
+}
+
+.logo {
+  font-family: "Style Script";
+  src: url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 0rem;
+  color: black;
+  margin-top: 9px;
+}
+
+.auth-form-container,
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container {
+  padding: 0rem 3rem 3rem 3rem;
+  border: 1px solid #4cc9f0;
+  border-radius: 10px;
+  box-shadow: 0 3px 3px 3px #4cc9f0;
+  opacity: 0.8;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: black;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.login-btn {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #7209b7;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.7rem;
+}
+
+.login-btn:hover {
+  transform: scale(1.075);
+  transition: all 0.5s;
+}

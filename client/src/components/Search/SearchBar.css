@@ -1,0 +1,38 @@
+.SearchBarPosition{
+    display: table;
+    margin-left: 12%;
+    width: 70%;
+  }
+
+.searchCard {
+  margin-left: 21% !important;
+  display: table!important;
+  width: 80% !important;
+  padding-top: 1%;
+}
+
+  .form-control {
+    font-size: 1.5rem !important;
+    line-height: 2 !important;
+    border-radius: 20px !important;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .SearchBarPosition {
+      margin-left: 8% !important;
+      width: 90% !important;
+    }
+    .searchCard {
+      margin-left: 12.5% !important;
+    }
+  }
+  @media screen and (max-width: 772px) {
+    .SearchBarPosition {
+      margin-left: 3% !important;
+      width: 95% !important;
+    }
+    .searchCard {
+      width: 100% !important;
+      margin-left: 0% !important;
+    }
+  }

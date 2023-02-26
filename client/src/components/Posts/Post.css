@@ -1,0 +1,110 @@
+.postCard {
+  margin-left: 12% !important;
+  display: grid!important;
+  width: 70% !important;
+  height: 10%;
+  padding-bottom: 2%;
+  padding-top: 1%;
+}
+.date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+.parent {
+  display: flex;
+  align-items: center; /* center elements vertically */
+  justify-content: center; /* center elements horizontally */
+  height: 100vh; /* make parent element take full height of viewport */
+}
+
+.delete {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+}
+.edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 6%;
+  margin-left: 6%;
+  margin-bottom: 2%;
+}
+
+
+.commentDate {
+  float: right;
+}
+
+.author {
+  padding-left: 4%;
+  padding-top: 2%;
+}
+
+.postText {
+  padding-left: 4%;
+  padding-top: 2%;
+}
+
+.card {
+  border-radius: 20px !important;
+  font-size: 1.5rem !important;
+  margin-top: 20px;
+  justify-content: center !important;
+}
+
+.commentForm {
+  padding-left: 4%;
+  padding-top: 2%;
+}
+
+.comments {
+  padding-left: 2%;
+}
+
+@media screen and (max-width: 1200px) {
+  .postCard {
+    margin-left: 8% !important;
+    width: 75% !important;
+  }
+}
+
+@media screen and (max-width: 772px) {
+  .postCard {
+    margin-left: 2.5% !important;
+    margin-right: 3% !important;
+    width: 95% !important;
+    margin-bottom: 13% !important;
+  }
+  .edit {
+    margin-right: 8% !important;
+  }
+}
+.smallComment {
+  width: 50%;
+}
+@media screen and (max-width: 500px) {
+  .smallComment {
+    width: 70%;
+    line-height: 1.5rem;
+  }
+  .postCard {
+    margin-bottom: 15% !important;
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+  }
+  .edit {
+    margin-right: 10% !important;
+    margin-bottom: 5% !important;
+  }
+  .delete {
+    margin-bottom: 5% !important;
+  }
+}
