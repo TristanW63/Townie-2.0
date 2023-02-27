@@ -19,6 +19,7 @@ import {
   Routes,
 } from "react-router-dom";
 
+//this needs to be changed to the deployed link when deployed to heroku or netlify "http://localhost:3001/graphql"
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
