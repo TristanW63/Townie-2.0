@@ -34,13 +34,13 @@ export const Login = (props) => {
         variables: { ...userData },
       });
       Auth.login(data.login.token);
-      const history = createBrowserHistory();
-      history.push('/home');
-      window.location.reload();
+      window.location.href = '/home'; // use window.location.href instead of history.push
+      // window.location.reload();
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
+    
 
     setUserData({
       username: "",
