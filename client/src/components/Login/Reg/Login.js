@@ -5,6 +5,7 @@ import Auth from "../../../utils/auth";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import { redirect } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import "./Login.css";
 
 export const Login = (props) => {
@@ -33,7 +34,9 @@ export const Login = (props) => {
         variables: { ...userData },
       });
       Auth.login(data.login.token);
-      // redirect("/home");
+      const history = createBrowserHistory();
+      history.push('/home');
+      window.location.reload();
     } catch (err) {
       console.error(err);
       setShowAlert(true);

@@ -1,6 +1,6 @@
 import decode from "jwt-decode";
 // import { redirect } from "react-router-dom";
-import { createBrowserHistory } from 'history';
+
 
 class AuthService {
   getProfile() {
@@ -29,9 +29,6 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem("id_token", idToken);
-    const history = createBrowserHistory();
-    history.push('/home');
-    window.location.reload();
   }
 
   logout() {
