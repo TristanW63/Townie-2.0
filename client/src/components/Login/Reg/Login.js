@@ -4,8 +4,6 @@ import { LOGIN_USER } from "../../../utils/mutations";
 import Auth from "../../../utils/auth";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import { redirect } from "react-router-dom";
-import { createBrowserHistory } from 'history';
 import "./Login.css";
 
 export const Login = (props) => {
@@ -34,13 +32,11 @@ export const Login = (props) => {
         variables: { ...userData },
       });
       Auth.login(data.login.token);
-      window.location.href = '/home'; // use window.location.href instead of history.push
-      // window.location.reload();
+ 
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
-    
 
     setUserData({
       username: "",
