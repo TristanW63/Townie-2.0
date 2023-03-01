@@ -29,7 +29,7 @@ const PostsList = ({ posts, refetch, currentUsername }) => {
       });
 
       setPostText("");
-      refetch();
+      refetch('/home');
     } catch (err) {
       console.error(err);
     }
