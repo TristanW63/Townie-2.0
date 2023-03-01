@@ -4,12 +4,14 @@ import { LOGIN_USER } from "../../../utils/mutations";
 import Auth from "../../../utils/auth";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export const Login = (props) => {
   const [userData, setUserData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   const [login] = useMutation(LOGIN_USER);
 
@@ -32,7 +34,7 @@ export const Login = (props) => {
         variables: { ...userData },
       });
       Auth.login(data.login.token);
- 
+      
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -46,6 +48,13 @@ export const Login = (props) => {
   };
   return (
     <div className="App">
+      <>
+      {(() => {
+        if(Auth.loggedIn()) {
+          return navigate("/home");
+          }
+        })()}
+      </>
       <div className="auth-form-container">
         <h1 className="logo">The Townie</h1>
         <h2 className="logintext">Login</h2>
