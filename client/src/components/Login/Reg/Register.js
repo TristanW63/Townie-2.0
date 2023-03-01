@@ -50,13 +50,6 @@ export const Register = (props) => {
 
   return (
     <div className="App">
-            <>
-      {(() => {
-        if(Auth.loggedIn()) {
-          return navigate("/home");
-          }
-        })()}
-      </>
       <div className="auth-form-container">
         <h1 className="logo">The Townie</h1>
         <h2 className="logintext">Register</h2>
