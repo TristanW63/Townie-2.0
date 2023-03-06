@@ -4,7 +4,7 @@ import Login from "./components/Login/Reg/Login";
 import Home from "./components/Home/Home";
 import Profile from "../src/components/Profile/Profile";
 import LikesPage from "./components/LikePage/LikePage";
-import Search from "./components/Search/SearchBar"
+import Search from "./components/Search/SearchBar";
 import { Register } from "./components/Login/Reg/Register";
 import {
   createHttpLink,
@@ -13,17 +13,14 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //this needs to be changed to the deployed link when deployed to heroku or netlify "http://localhost:3001/graphql"
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "http://localhost:3001/graphql",
 });
 
+//this is the token that is used to authenticate the user
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {

@@ -69,9 +69,9 @@ const PostsList = ({ posts, refetch, currentUsername }) => {
         {posts &&
           posts.map((post) => (
             <div key={post._id} className="card">
-              {/* <p className="author">{post.postAuthor}</p> */}
               <span className="author">
-              <AddFriend username={post.postAuthor} />
+              <p className="author">{post.postAuthor}</p>
+              {/* <AddFriend username={post.postAuthor} /> */}
               </span>
               <span className="date">{post.createdAt}</span>
               <p style={{ paddingLeft: "4%", paddingTop: "2%" }}>

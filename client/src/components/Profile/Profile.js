@@ -17,6 +17,7 @@ const Profile = (refetch) => {
   const [deleteUser] = useMutation(DELETE_USER);
   const [showModal, setShowModal] = useState(false);
 
+  // Find Current User
   const user = data?.me || {};
   const userId = data?.me._id || {};
   console.log(userId);
@@ -24,6 +25,7 @@ const Profile = (refetch) => {
     return <h2>LOADING...</h2>;
   }
 
+  // Delete User
   const handleDelete = async (userId) => {
     try {
       const { data, error } = await deleteUser({

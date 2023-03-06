@@ -16,9 +16,11 @@
 
 .weather {
   position: absolute;
-  top: 0;
+  top: 1;
   right: 0;
+  margin: 5%;
 }
+
 
 .deleteusers {
   font-size: 2rem;
@@ -56,6 +58,9 @@
     font-size: 1.2rem;
     margin-top: 5px;
     margin-right: 0px;
+  }
+  .weather {
+   display: none;
   }
 }
 

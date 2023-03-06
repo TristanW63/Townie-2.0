@@ -12,6 +12,7 @@ const SearchPage = () => {
   const { username: userParam } = useParams();
   const [userSearch, setUserSearch] = useState("");
 
+  
   const { data, refetch } = useQuery(QUERY_USERS, {
     variables: { username: userParam },
   });
@@ -27,6 +28,7 @@ const SearchPage = () => {
 
     const userArray = Object.values(users);
 
+    // finds the user in the array of users
     let isFound = false;
     for (let i = 0; i < users.length; i++) {
       if (userSearch === userArray[i].username) {
