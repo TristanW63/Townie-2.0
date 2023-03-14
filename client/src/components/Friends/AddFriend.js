@@ -6,28 +6,40 @@ import { BsPersonPlusFill } from "react-icons/bs";
 // import { useParams } from "react-router-dom";
 
 const AddFriend = ({ username }) => {
-    console.log(username)
-    const [getUser, { loading, data, error }] = useLazyQuery(QUERY_USER);
-    const handleClick = () => {
-    try{
-            getUser({
-              variables: { username }
-            });
-          
-    }
-    catch(err) {
-        console.log(err)
-    }
-}
-  
-    return (
-      <>
-        <p>
-          {username} <BsPersonPlusFill onClick={handleClick} />
-        </p>
-      </>
-    );
+  const [addFriend] = useMutation(ADD_FRIEND);
+  const [getUser, { loading, data, error }] = useLazyQuery(QUERY_USER,
+    { variables: { username: username } }
+  );
+
+  const friend = data?.user._id;
+
+  console.log(friend);
+  const handleAddFriendClick = () => {
+    getUser();
+    handleClick();
   };
-  
-  export default AddFriend;
+
+  const handleClick = async () => {
+    try {
+      const { data } = await addFriend({
+        variables: {
+          userId: friend,
+        },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <>
+      <p>
+      {username} <BsPersonPlusFill onClick={() => {handleAddFriendClick();}} />
+      </p>
+    </>
+  );
+};
+
+export default AddFriend;
+
   

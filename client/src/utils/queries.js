@@ -68,20 +68,6 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      posts {
-        _id
-        postText
-        postAuthor
-        likeCount
-        commentCount
-        createdAt
-        comments {
-          commentAuthor
-          commentText
-          createdAt
-          _id
-        }
-      }
     }
   }
 `;
