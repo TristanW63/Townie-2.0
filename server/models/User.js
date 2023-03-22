@@ -36,6 +36,10 @@ const userSchema = new Schema({
       ref: "User",
     },
   ],
+  friendCount: {
+    type: Number,
+    default: 0,
+  },
 });
 
 userSchema.pre("save", async function (next) {

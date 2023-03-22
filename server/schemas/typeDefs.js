@@ -9,6 +9,7 @@ const typeDefs = gql`
     posted: [Post]!
     liked: [Post]!
     friends: [User]!
+    friendCount: Int
   }
   type Post {
     _id: ID
@@ -32,6 +33,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
+    friends: User
     posts(postAuthor: String): [Post]
     post(postId: ID!): Post
     liked: User

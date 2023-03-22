@@ -40,6 +40,14 @@ const resolvers = {
       }
       throw new AuthenticationError("You must be logged in!");
     },
+    friends: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate({
+          path: "friends",
+          options: { sort: { createdAt: -1 } },
+        });
+      }
+    },
   },
 
   Mutation: {
@@ -195,9 +203,17 @@ const resolvers = {
       });
     },
     addFriend: async(parent, { userId }, context) => {
+      const currentUser = await User.findOne({ _id: context.user._id });
+
+      // Check if the user has already liked the post
+      if (currentUser.friends.includes(userId)) {
+        return currentUser;
+      }
       return User.findByIdAndUpdate(
         { _id: context.user._id },
-        { $addToSet: { friends: userId }},
+        {
+          $inc: { friendCount: 1 },
+          $addToSet: { friends: userId}},
         { new: true },
       )
     },

@@ -10,6 +10,7 @@ import { NavLink, Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import Auth from "../../utils/auth";
+import { BiFontSize } from "react-icons/bi";
 
 const Profile = (refetch) => {
   const { loading, data } = useQuery(QUERY_ME);
@@ -61,6 +62,7 @@ const Profile = (refetch) => {
                 onClick={() => setShowModal(true)}
               />
             </p>
+            <div className="friendCount">Friends: {user.friendCount}</div>
           </div>
           <PostsList
             posts={user.posted}

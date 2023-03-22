@@ -14,6 +14,12 @@
   );
 }
 
+.friendCount{
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 10px;
+}
+
 .weather {
   position: absolute;
   top: 1;
