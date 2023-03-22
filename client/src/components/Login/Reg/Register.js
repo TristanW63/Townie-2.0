@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../../utils/mutations";
 import Auth from "../../../utils/auth";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export const Register = (props) => {
@@ -16,6 +17,7 @@ export const Register = (props) => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [addUser] = useMutation(ADD_USER);
+  const navigate = useNavigate();
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -50,6 +52,13 @@ export const Register = (props) => {
 
   return (
     <div className="App">
+            <>
+      {(() => {
+        if(Auth.loggedIn()) {
+          return navigate("/home");
+          }
+        })()}
+      </>
       <div className="auth-form-container">
         <h1 className="logo">The Townie</h1>
         <h2 className="logintext">Register</h2>

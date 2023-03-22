@@ -117,3 +117,17 @@ query{
   }
 }
 `;
+
+export const QUERY_FRIENDS = gql`
+query Query {
+  friends {
+    friends {
+      _id
+      username
+      posted {
+        _id
+      }
+    }
+  }
+}
+`;

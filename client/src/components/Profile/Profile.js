@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../Home/Home.css";
 import NavBar from "./../Navbar/Navbar";
-import { QUERY_ME } from "../../utils/queries";
-import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_ME, QUERY_FRIENDS } from "../../utils/queries";
+import { useQuery, useMutation, useLazyQuery } from "@apollo/client";
 import PostsList from "../Posts/Posts";
 import { DELETE_USER } from "../../utils/mutations";
 import { AiFillDelete } from "react-icons/ai";
@@ -10,22 +10,32 @@ import { NavLink, Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import Auth from "../../utils/auth";
-import { BiFontSize } from "react-icons/bi";
+import { FaUserFriends } from "react-icons/fa";
 
 const Profile = (refetch) => {
   const { loading, data } = useQuery(QUERY_ME);
+  const [getFriends, { loading2, data2 }] = useLazyQuery(QUERY_FRIENDS);
   const currentUsername = data?.me?.username;
   const [deleteUser] = useMutation(DELETE_USER);
   const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
 
   // Find Current User
   const user = data?.me || {};
-  const userId = data?.me._id || {};
-  console.log(userId);
   if (loading) {
     return <h2>LOADING...</h2>;
   }
 
+  const handleFriend = async () => {
+    try {
+      const { data } = await getFriends({
+        variables: { username: currentUsername },
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   // Delete User
   const handleDelete = async (userId) => {
     try {
@@ -62,7 +72,9 @@ const Profile = (refetch) => {
                 onClick={() => setShowModal(true)}
               />
             </p>
-            <div className="friendCount">Friends: {user.friendCount}</div>
+            <p className="friendCount" onClick={() => {setShowModal2(true); handleFriend();}}>
+              Friends: {user.friendCount}
+              </p>
           </div>
           <PostsList
             posts={user.posted}
@@ -73,6 +85,22 @@ const Profile = (refetch) => {
           />
         </div>
       </div>
+      <Modal show={showModal2} onHide={() => setShowModal2(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Friends</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+       {user.friends.map((friend) => (
+            <div className="friendCard" key={friend._id}>
+              <div className="friendCardInfo">
+                <p style={{ fontSize: "2rem"}}>{friend.username}</p>
+              </div>
+            </div>
+          ))}
+        </Modal.Body>
+
+        </Modal>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Profile</Modal.Title>

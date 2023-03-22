@@ -3,43 +3,49 @@ import { QUERY_USER } from "../../utils/queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import { ADD_FRIEND } from "../../utils/mutations";
 import { BsPersonPlusFill } from "react-icons/bs";
-// import { useParams } from "react-router-dom";
 
 const AddFriend = ({ username }) => {
   const [addFriend] = useMutation(ADD_FRIEND);
-  const [getUser, { loading, data, error }] = useLazyQuery(QUERY_USER,
-    { variables: { username: username } }
-  );
+  const [getUser, { loading, data, error }] = useLazyQuery(QUERY_USER, {
+    variables: { username: username },
+  });
+  const friend = data?.user?._id;
 
-  const friend = data?.user._id;
-
-  console.log(friend);
-  const handleAddFriendClick = () => {
-    getUser();
-    handleClick();
+  const handleAddFriendClick = async () => {
+    await getUser();
   };
 
-  const handleClick = async () => {
-    try {
-      const { data } = await addFriend({
-        variables: {
-          userId: friend,
-        },
-      });
-    } catch (err) {
-      console.error(err);
+  useEffect(() => {
+    const handleClick = async () => {
+      try {
+        const { data } = await addFriend({
+          variables: {
+            userId: friend,
+          },
+        });
+        window.location.reload();
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    if (friend) {
+      handleClick();
     }
-  };
+  }, [friend]);
 
   return (
     <>
       <p>
-      {username} <BsPersonPlusFill onClick={() => {handleAddFriendClick();}} />
+        {username}{" "}
+        <BsPersonPlusFill onClick={() => handleAddFriendClick()} />
       </p>
     </>
   );
 };
 
 export default AddFriend;
+
 
   
