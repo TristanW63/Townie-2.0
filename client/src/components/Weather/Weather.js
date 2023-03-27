@@ -20,7 +20,7 @@ const WeatherCard = () => {
           .then((res) => res.json())
           .then((result) => {
             setData(result);
-            console.log(result);
+            // console.log(result);
           });
       });
     };
@@ -34,6 +34,7 @@ const WeatherCard = () => {
         <Card className="weather">
           <Card.Body>
             <Card.Text>
+              <div>
               <span style={{ fontSize: "2rem" }}>
                 {data.name}
               </span>
@@ -41,6 +42,7 @@ const WeatherCard = () => {
               <p>Feels like: {data.main.feels_like}°F</p>
               <p>Humidity: {data.main.humidity}%</p>
               <p>Wind: {data.wind.speed}m/s</p>
+              </div>
             </Card.Text>
           </Card.Body>
         </Card>

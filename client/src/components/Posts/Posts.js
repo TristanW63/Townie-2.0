@@ -11,7 +11,7 @@ import { UPDATE_POST } from "../../utils/mutations";
 import { DELETE_POST } from "../../utils/mutations";
 import AddFriend from "../Friends/AddFriend";
 
-const PostsList = ({ posts, refetch, currentUsername }) => {
+const PostsList = ({ posts, refetch, currentUsername, currentUser, myId }) => {
   const [showModal, setShowModal] = useState(false);
   const [postText, setPostText] = useState("");
   const [postId, setPostId] = useState("");
@@ -71,7 +71,7 @@ const PostsList = ({ posts, refetch, currentUsername }) => {
             <div key={post._id} className="card">
               <span className="author">
               {/* <p className="author">{post.postAuthor}</p> */}
-              <AddFriend username={post.postAuthor} />
+              <AddFriend username={post.postAuthor} currentUser={currentUser} myId={myId} refetch={refetch} />
               </span>
               <span className="date">{post.createdAt}</span>
               <p style={{ paddingLeft: "4%", paddingTop: "2%" }}>
