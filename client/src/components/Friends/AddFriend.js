@@ -1,35 +1,45 @@
 import React, { useState, useEffect, createContext } from "react";
 import { QUERY_USER, QUERY_ME } from "../../utils/queries";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
-import { ADD_FRIEND } from "../../utils/mutations";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
-const AddFriend = ({ username }) => {
+export const IdContext = createContext();
+
+const AddFriend = ({ username, myId }) => {
   const [getUser, { loading, data, error }] = useLazyQuery(QUERY_USER, {
     variables: { username: username },
+    onCompleted: ({ user }) => {
+      const userId = user._id;
+      setUserId(userId);
+      if(myId !== userId) {
+      navigate({
+        pathname: `/UserProfile`,
+      });
+    } else {
+      navigate({
+        pathname: `/Profile`,
+      });
+    }
+    },
   });
 
   const navigate = useNavigate();
+  const { setUserId } = useContext(IdContext);
 
-  const userId = data?.user?._id;
-
-  const handleAddFriendClick = async () => {
-    await getUser();
-    // setUser(data?.user?._id);
-    navigate({
-      pathname: `/UserProfile/${userId}`,
-      state: { userId: userId },
-    });
+  const handleAddFriendClick = () => {
+    getUser();
   };
   
   return (
     <>
       <p onClick={handleAddFriendClick}>
-        {username}{" "}
-        </p>
+        {username}
+      </p>
     </>
   );
 };
 
+
 export default AddFriend;
+

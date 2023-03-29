@@ -116,6 +116,35 @@ query Liked {
 }
 `;
 
+export const QUERY_USERPROFILE = gql`
+query Query($userId: ID!) {
+  friendProfile(userId: $userId) {
+    _id
+    username
+    email
+    friendCount
+    friends {
+      _id
+      username
+    }
+    posted {
+      _id
+      postText
+      postAuthor
+      likeCount
+      commentCount
+      createdAt
+      comments {
+        commentAuthor
+        commentText
+        createdAt
+        _id
+      }
+    }
+  }
+}
+`;
+
 export const QUERY_USERS = gql`
 query{
   users {

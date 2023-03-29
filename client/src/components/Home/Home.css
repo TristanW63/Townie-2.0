@@ -34,6 +34,12 @@
  margin: 10px;
 }
 
+.addfriend{
+  font-size: 2rem;
+  font-weight: 600;
+ margin-bottom: 2px;
+}
+
 .DeleteBtn {
   float: right;
   margin-top: 8px;

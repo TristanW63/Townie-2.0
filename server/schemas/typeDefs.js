@@ -33,6 +33,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
+    friendProfile(userId: ID!): User
     friends: User
     posts(postAuthor: String): [Post]
     post(postId: ID!): Post

@@ -7,6 +7,14 @@ const resolvers = {
     users: async () => {
       return User.find().populate("posted").sort({ createdAt: -1 });
     },
+    friendProfile: async (parent, { userId }) => {
+      return User.findOne({ _id: userId }).populate({
+        path: "posted",
+        options: { sort: { createdAt: -1 } },
+      })
+
+  ;
+    },
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .populate("posted")

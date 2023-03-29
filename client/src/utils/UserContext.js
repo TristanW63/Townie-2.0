@@ -5,18 +5,18 @@ export const UserContext = createContext({
   long: null,
 });
 
-export const FriendContext = createContext({
-    userId: null,
-    });
+// export const FriendContext = createContext({
+//     userId: null,
+//     });
 
-    export function FriendContextProvider({ children }) {
-        const [userId, setUserId] = useState(null);
-        return (
-          <FriendContext.Provider value={userId}>
-            {children}
-          </FriendContext.Provider>
-        );
-      }
+//     export function FriendContextProvider({ children }) {
+//         const [userId, setUserId] = useState(null);
+//         return (
+//           <FriendContext.Provider value={userId}>
+//             {children}
+//           </FriendContext.Provider>
+//         );
+//       }
 
 export function UserContextProvider({ children }) {
   const [lat, setLat] = useState(null);

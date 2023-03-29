@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Login from "./components/Login/Reg/Login";
 import Home from "./components/Home/Home";
@@ -17,6 +17,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { IdContext } from "./components/Friends/AddFriend";
 
 //this needs to be changed to the deployed link when deployed to heroku or netlify "http://localhost:3001/graphql"
 const httpLink = createHttpLink({
@@ -40,10 +41,11 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [userId, setUserId] = useState(null);
   return (
     <ApolloProvider client={client}>
       <Router>
-      <UserContextProvider>
+      <IdContext.Provider value={{ userId, setUserId }}>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -51,9 +53,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/likes" element={<LikesPage />} />
           <Route path="/Search" element={<Search />} />
-          <Route path="/UserProfile/:userId" element={<UserProfile />} />
+          <Route path="/UserProfile" element={<UserProfile />} />
         </Routes>
-        </UserContextProvider>
+        </IdContext.Provider>
       </Router>
     </ApolloProvider>
   );

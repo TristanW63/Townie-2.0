@@ -10,9 +10,9 @@ const Home = () => {
   const { data: postsData, refetch } = useQuery(QUERY_POSTS);
   const { loading, data } = useQuery(QUERY_ME);
   const currentUser = data?.me?.friends || {};
-  // const myId = data?.me._id;
+  const myId = data?.me._id;
 
-  // console.log(currentUser);
+  // console.log(myId);
 
   const posts = postsData?.posts || {};
 
@@ -23,7 +23,7 @@ const Home = () => {
         <PostsList
           posts={posts}
           currentUser={currentUser}
-          // myId={myId}
+          myId={myId}
           title="some feed for posts"
           refetch={refetch}
         />
