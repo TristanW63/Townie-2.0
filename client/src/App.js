@@ -4,8 +4,11 @@ import Login from "./components/Login/Reg/Login";
 import Home from "./components/Home/Home";
 import Profile from "../src/components/Profile/Profile";
 import LikesPage from "./components/LikePage/LikePage";
+import UserProfile from "./components/Profile/UserProfile";
 import Search from "./components/Search/SearchBar";
 import { Register } from "./components/Login/Reg/Register";
+import { useContext } from "react";
+import { UserContext, UserContextProvider } from "./utils/UserContext";
 import {
   createHttpLink,
   ApolloClient,
@@ -40,6 +43,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+      <UserContextProvider>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -47,7 +51,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/likes" element={<LikesPage />} />
           <Route path="/Search" element={<Search />} />
+          <Route path="/UserProfile/:userId" element={<UserProfile />} />
         </Routes>
+        </UserContextProvider>
       </Router>
     </ApolloProvider>
   );

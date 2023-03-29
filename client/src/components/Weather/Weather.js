@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
+import { UserContext } from "../../utils/UserContext";
 
 const WeatherCard = () => {
   const [lat, setLat] = useState([]);
