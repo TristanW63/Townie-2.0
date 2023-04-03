@@ -10,7 +10,7 @@ const Home = () => {
   const { data: postsData, refetch } = useQuery(QUERY_POSTS);
   const { loading, data } = useQuery(QUERY_ME);
   const currentUser = data?.me?.friends || {};
-  const myId = data?.me._id;
+  const myId = data?.me;
 
   // console.log(myId);
 
