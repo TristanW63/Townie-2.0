@@ -5,7 +5,7 @@ import { ADD_LIKE, UNLIKE } from "../../utils/mutations";
 import { QUERY_POSTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 
-const LikeList = ({ postId, myId }) => {
+const LikeList = ({ postId }) => {
   const [likeCount, setLikeCount] = useState("");
   const [liked, setLiked] = useState(false);
   const [addLike] = useMutation(ADD_LIKE);
@@ -16,9 +16,9 @@ const LikeList = ({ postId, myId }) => {
     variables: { id: postId },
   });
 
-
+  
   useEffect(() => {
-    const liked = localStorage.getItem(`post-${postId}-likedBy-${myId}`);
+    const liked = localStorage.getItem(`post-${postId}-liked`);
     if (liked === 'true') {
       setUserLikedPost(true);
     }
@@ -36,7 +36,7 @@ const LikeList = ({ postId, myId }) => {
 
       setLikeCount("");
       setUserLikedPost(true);
-      localStorage.setItem(`post-${postId}-likedBy-${myId}`, true);
+      localStorage.setItem(`post-${postId}-liked`, true);
       refetch();
     } catch (err) {
       console.error(err);
@@ -54,7 +54,7 @@ const LikeList = ({ postId, myId }) => {
       });
       setLikeCount("");
       setUserLikedPost(false);
-      localStorage.removeItem(`post-${postId}-likedBy-${myId}`);
+      localStorage.removeItem(`post-${postId}-liked`);
       setUserUnlikedPost(true);
       refetch();
     } catch (err) {
