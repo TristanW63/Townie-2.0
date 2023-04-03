@@ -24,6 +24,7 @@ const UserProfile = () => {
     variables: { username: currentUsername },
   });
   const currentUser = data2?.user || {};
+  const currentUserID = data2?.user._id || {};
   const [addFriend] = useMutation(ADD_FRIEND);
 
   const handleAddFriend = async () => {
@@ -40,12 +41,12 @@ const UserProfile = () => {
       });
       console.log(data);
       setAddedFriend(true);
-      localStorage.setItem(`addedFriend${userId}`, true);
+      localStorage.setItem(`addedFriend${userId}currentUserID${currentUserID}`, true);
     }
   };
 
   useEffect(() => {
-    const addedFriend = localStorage.getItem(`addedFriend${userId}`);
+    const addedFriend = localStorage.getItem(`addedFriend${userId}currentUserID${currentUserID}`);
     if (addedFriend) {
       setAddedFriend(true);
     }

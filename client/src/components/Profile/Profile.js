@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import { FaUserFriends } from "react-icons/fa";
 
-const Profile = (refetch) => {
-  const { loading, data } = useQuery(QUERY_ME);
+const Profile = () => {
+  const { loading, data, refetch } = useQuery(QUERY_ME);
   const [getFriends, { loading2, data2 }] = useLazyQuery(QUERY_FRIENDS);
   const currentUsername = data?.me?.username;
   const [deleteUser] = useMutation(DELETE_USER);

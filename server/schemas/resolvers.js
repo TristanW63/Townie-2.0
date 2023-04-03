@@ -36,7 +36,7 @@ const resolvers = {
         return User.findOne({ _id: context.user._id }).populate({
           path: "liked",
           options: { sort: { createdAt: -1 } },
-        })
+        });
       }
     },
     me: async (parent, args, context) => {

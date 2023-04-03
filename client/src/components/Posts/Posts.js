@@ -82,7 +82,7 @@ const PostsList = ({ posts, refetch, currentUsername, currentUser, myId }) => {
               </div>
               <p>
                 <span style={{ marginRight: "3%", paddingLeft: "3%" }}>
-                  <LikeList postId={post._id} refetch={refetch} />{" "}
+                  <LikeList postId={post._id} refetch={refetch} myId={myId}/>{" "}
                   {post.likeCount}
                 </span>
                 <CommentList comments={post.comments} /> {post.commentCount}

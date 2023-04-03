@@ -9,14 +9,14 @@ import { QUERY_LIKED } from "../../utils/queries";
 const LikesPage = () => {
   const { username: userParam } = useParams();
 
-  const { loading, data } = useQuery(QUERY_LIKED, {
+  const { loading, data, refetch } = useQuery(QUERY_LIKED, {
     variables: { username: userParam },
   });
 
   const user = data?.liked || {};
 
 console.log(user)
-
+refetch();
   if (loading) {
     return <h2>LOADING...</h2>;
   }
