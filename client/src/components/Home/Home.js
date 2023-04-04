@@ -12,7 +12,7 @@ const Home = () => {
   const currentUser = data?.me?.friends || {};
   const myId = data?.me._id;
 
-  // console.log(myId);
+  // console.log(postsData);
 
   const posts = postsData?.posts || {};
 

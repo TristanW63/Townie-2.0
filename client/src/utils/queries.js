@@ -38,6 +38,9 @@ query Query($postId: ID!) {
     createdAt
     likeCount
     commentCount
+    likedBy {
+      _id
+    }
     comments {
       _id
       commentText
@@ -57,6 +60,9 @@ export const QUERY_POSTS = gql`
       createdAt
       likeCount
       commentCount
+      likedBy {
+        _id
+      }
       comments {
         commentAuthor
         commentText

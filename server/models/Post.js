@@ -18,6 +18,12 @@ const postSchema = new Schema({
     type: Number,
     default: 0,
   },
+  likedBy: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   commentCount: {
     type: Number,
     default: 0,

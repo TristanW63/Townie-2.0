@@ -17,6 +17,8 @@ const typeDefs = gql`
     postAuthor: String
     createdAt: String
     likeCount: Int
+    likedBy: [User]!
+    location: String
     commentCount: Int
     comments: [Comment]!
   }
