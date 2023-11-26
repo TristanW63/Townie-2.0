@@ -111,6 +111,9 @@ query Liked {
       createdAt
       likeCount
       commentCount
+      likedBy {
+        _id
+      }
       comments {
         _id
         commentText

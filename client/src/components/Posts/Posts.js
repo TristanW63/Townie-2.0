@@ -82,7 +82,7 @@ const PostsList = ({ posts, refetch, currentUsername, currentUser, myId }) => {
               </div>
               <p>
                 <span style={{ marginRight: "3%", paddingLeft: "3%" }}>
-                  <LikeList postId={post._id} post={post} refetch={refetch} myId={myId}/>{" "}
+                  <LikeList postId={post._id} post={post} refetch={refetch} likedPosts={posts} myId={myId}/>{" "}
                   {post.likeCount}
                 </span>
                 <CommentList comments={post.comments} /> {post.commentCount}
@@ -94,6 +94,7 @@ const PostsList = ({ posts, refetch, currentUsername, currentUser, myId }) => {
                     onClick={() => {
                       setShowModal(true);
                       setPostId(post._id);
+                      setPostText(post.postText);
                     }}
                   
                     Update
@@ -121,7 +122,7 @@ const PostsList = ({ posts, refetch, currentUsername, currentUser, myId }) => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Control
-                as="textarea"
+                as={"textarea"}
                 name="postText"
                 onChange={handleChange}
                 value={postText}

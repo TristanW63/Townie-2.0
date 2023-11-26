@@ -5,7 +5,7 @@ import { ADD_LIKE, UNLIKE } from "../../utils/mutations";
 import { QUERY_POSTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 
-const LikeList = ({ postId, myId, post }) => {
+const LikeList = ({ postId, myId, post, likedPosts }) => {
   const [likeCount, setLikeCount] = useState("");
   const [liked, setLiked] = useState(false);
   const [addLike] = useMutation(ADD_LIKE);
@@ -15,11 +15,12 @@ const LikeList = ({ postId, myId, post }) => {
     variables: { id: postId },
   });
   const likePosts = data?.posts || {};
-  console.log(likePosts);
+  console.log(likedPosts);
 
   useEffect(() => {
-    const likedByCurrentUser = post?.likedBy?.some((user) => user._id === myId);
+    const likedByCurrentUser = post?.likedBy?.some((user) => user._id === myId) || likedPosts?.likedBy?.some((user) => user._id === myId);
     setLiked(likedByCurrentUser);
+    console.log(likedByCurrentUser);
   }, [post, myId]);
 
   const handleSubmit = async () => {
